@@ -14,12 +14,12 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Please provide a brief description of the project.'
+        message: 'Please provide a description of the project. Consider the what, why, and how about this specific application.'
     },
     {
         type: 'input',
         name: 'installation',
-        message: 'How should the project be installed?'
+        message: 'What steps are needed to install the project?'
     },
     {
         type: 'input',
@@ -29,7 +29,7 @@ const questions = [
     {
         type: 'list',
         name: 'license',
-        message: 'What type of license covers this project?',
+        message: 'What type of license protection applies to this project?',
         choices: [
             {
                 name: 'None',
@@ -107,12 +107,12 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'What guidelines should be followed to contribute to the project?'
+        message: 'What collaborators or third-party assets were part of this project?'
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'How should the project be tested?'
+        message: 'Are there any tests for this project? How should they be run?'
     },
     {
         type: 'input',

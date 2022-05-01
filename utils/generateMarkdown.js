@@ -16,18 +16,15 @@ function renderLicenseSection(license) {
   if (license.name === 'None') {
     return 'There are no licenses associated with this project.'
   }
-  console.log(`
-  ${renderLicenseBadge(license)} ${renderLicenseLink(license)}
-  `)
   return `
-  ${renderLicenseBadge(license)} ${renderLicenseLink(license)}
+  ${renderLicenseLink(license)}
   `;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # ${data.title}
+  # ${data.title} ${renderLicenseBadge(data.license)}
 
   ## Description
   ${data.description}
@@ -50,17 +47,20 @@ function generateMarkdown(data) {
   ${data.usage}
 
   ## License
+  The below license covers this application. Please review before modifying for your own work.  
   ${renderLicenseSection(data.license)}
 
   ## Contributing
+  This project was completed with help from:  
   ${data.contributing}
 
   ## Tests
   ${data.tests}
 
   ## Questions
-  [${data.username}](https://github.com/${data.username})  
-  <${data.email}>
+  Please direct any comments or inquiries using the resources below:  
+  GitHub: [${data.username}](https://github.com/${data.username})  
+  Email: <${data.email}>
 `;
 }
 
