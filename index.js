@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
@@ -28,8 +29,80 @@ const questions = [
     {
         type: 'list',
         name: 'license',
-        message: 'What is the title of the project?',
-        choices: ['Apache License 2.0', 'Boost Software License 1.0', 'GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'MIT License', 'Mozilla Public License 2.0', 'The Unlicense']
+        message: 'What type of license covers this project?',
+        choices: [
+            {
+                name: 'None',
+                value: {
+                    name: 'None',
+                    badge: '',
+                    link: ''
+                }
+            }, 
+            {
+                name: 'Apache License 2.0',
+                value: {
+                    name: 'Apache License 2.0',
+                    badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+                    link: 'https://opensource.org/licenses/Apache-2.0'
+                }
+            }, 
+            {
+                name: 'Boost Software License 1.0',
+                value: {
+                    name: 'Boost Software License 1.0',
+                    badge: '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)',
+                    link: 'https://www.boost.org/LICENSE_1_0.txt'
+                }
+            }, 
+            {
+                name: 'GNU AGPLv3',
+                value: {
+                    name: 'GNU AGPLv3',
+                    badge: '[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)',
+                    link: 'https://www.gnu.org/licenses/agpl-3.0'
+                },
+            },
+            {
+                name: 'GNU GPLv3',
+                value: {
+                    name: 'GNU GPLv3',
+                    badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+                    link: 'https://www.gnu.org/licenses/gpl-3.0'
+                }
+            },
+            {
+                name: 'GNU LGPLv3',
+                value: {
+                    name: 'GNU LGPLv3',
+                    badge: '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)',
+                    link: 'https://www.gnu.org/licenses/lgpl-3.0'
+                }
+            },
+            {
+                name: 'MIT License',
+                value: {
+                    name: 'MIT License',
+                    badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+                    link: 'https://opensource.org/licenses/MIT'
+                }
+            },
+            {
+                name: 'Mozilla Public License 2.0',
+                value: {
+                    name: 'Mozilla Public License 2.0',
+                    badge: '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
+                    link: 'https://opensource.org/licenses/MPL-2.0'
+                }
+            },
+            {
+                name: 'The Unlicense',
+                value: {
+                    name: 'The Unlicense',
+                    badge: '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://unlicense.org/)',
+                    link: 'https://unlicense.org/'
+                }
+            }]
     },
     {
         type: 'input',
@@ -44,17 +117,30 @@ const questions = [
     {
         type: 'input',
         name: 'username',
-        message: 'Enter your GitHub Username'
+        message: 'Enter your GitHub Username: '
     },
     {
         type: 'input',
         name: 'email',
-        message: 'Enter an email address for questions about the project'
+        message: 'Enter an email address for questions about the project: '
     },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(pageMarkdown) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', pageMarkdown, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+};
 
 // TODO: Create a function to initialize app
 function init() {
