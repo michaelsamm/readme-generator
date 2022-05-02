@@ -1,10 +1,9 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
-// Title, Description, TOC, Installation, Usage, License (list show badge at top in addition to adding to license section), Contributing, Tests, Questions (github username + email)
+// Array of questions for user input covering the following topics: Title, Description, Installation, Usage, License, Contributors, Tests, GitHub Username, and Email
 const questions = [
     {
         type: 'input',
@@ -30,7 +29,9 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What type of license protection applies to this project?',
+        // Each choice is an object with values to utilize for displaying the license name, generating a badge for the license, and creating a link to the license details; choices obtained from https://choosealicense.com/licenses/
         choices: [
+            // Include an option for if no licenses apply
             {
                 name: 'None',
                 value: {
@@ -126,9 +127,10 @@ const questions = [
     },
 ];
 
-// TODO: Create a function to write README file
+// Function to write README file using the data received from generateMarkdown
 function writeToFile(pageMarkdown) {
     return new Promise((resolve, reject) => {
+        // Create file called README.md in the dist folder with the contents from pageMarkdown
         fs.writeFile('./dist/README.md', pageMarkdown, err => {
             if (err) {
                 reject(err);
@@ -142,17 +144,19 @@ function writeToFile(pageMarkdown) {
     });
 };
 
-// TODO: Create a function to initialize app
+// Function to initialize app by prompting the user with the questions array
 function init() {
     return inquirer
         .prompt(questions)
 };
 
-// Function call to initialize app
+// Call to initialize app
 init()
+    // THEN pass the answers in the generateMarkdown function
     .then(data => {
         return generateMarkdown(data);
     })
+    // THEN pass the markdown text into the writeToFile function to create the doc
     .then(pageMarkdown => {
         return writeToFile(pageMarkdown);
     });

@@ -1,8 +1,8 @@
 
-  # Test [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+  # Test Project [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
   ## Description
-  Test description
+  What, why, and how. 
 
   ## Table of Contents
   [Description](#description)  
@@ -14,12 +14,11 @@
   [Tests](#tests)  
   [Questions](#questions)
 
-
   ## Installation
-  Test installation steps
+  Download the repository. Then install any dependencies.
 
   ## Usage
-  Test usage instructions
+  Run node index and copy the generated file into your repo.
 
   ## License
   The below license covers this application. Please review before modifying for your own work.  
@@ -32,9 +31,9 @@
   UW Coding Bootcamp
 
   ## Tests
-  No test tests
+  NA
 
   ## Questions
   Please direct any comments or inquiries using the resources below:  
-  GitHub: [sample](https://github.com/sample)  
-  Email: <email@email.com>
+  GitHub: [michaelsamm](https://github.com/michaelsamm)  
+  Email: <msamm93@gmail.com>
